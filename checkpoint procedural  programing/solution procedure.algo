@@ -1,0 +1,31 @@
+PROCEDURE dot_product(v1,v2 : ARRAY_OF INTEGER, VAR dot : INTEGER)
+VAR
+    i : INTEGER;
+BEGIN
+    dot :=0;
+    i:=0;
+    IF (v1.length <> v2.length) THEN
+        Write("impossible de multiplier deux vecteurs de diffirent taille");
+        dot := NaN; 
+    END_IF
+    WHILE (i <v1.length ) DO
+        dot +:=  v1[i]*v2[i];
+    END_WHILE
+END
+
+ALGORITHM orthogonal_vectors
+VAR
+    v1,v2 : ARRAY_OF INTEGER [50];
+    dot, n1, n2 : INTEGER;
+BEGIN 
+    n1 := read_size();
+    read_array(n1,v1);
+    n2 := read_size();
+    read_array(n2,v2);
+    dot_product(v1,v2,dot);
+    IF (dot = 0) THEN
+        Write("V1 et orthogonal à V2");
+    ELSE
+        Write("V1 et V2 ne sont pas orthogonal");
+    END_IF
+END
